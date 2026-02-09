@@ -1,0 +1,225 @@
+ 
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hospital Bill</title>
+ 
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 30px;
+        line-height: 1.5;
+    }
+ 
+    .header-bar {
+        width: 100%;
+        height: 150px;
+        background: #0f5fa8;
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 40px;
+    }
+ 
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+    }
+ 
+    .hospital-logo {
+        width: 95px;
+        height: 95px;
+        object-fit: contain;
+        background: white;
+        border-radius: 10px;
+        border: 2px solid #ffffff;
+    }
+ 
+    .hospital-info {
+        color: white;
+        line-height: 1.3;
+    }
+ 
+    .hospital-info .hospital-name {
+        font-size: 28px;
+        font-weight: bold;
+    }
+ 
+    .barcode {
+        width: 150px;
+        height: 70px;
+        object-fit: contain;
+    }
+ 
+    h1 {
+        text-align: center;
+        color: #0f5fa8;
+        font-size: 24px;
+    }
+ 
+    h2 {
+        color: #0f5fa8;
+        margin-top: 25px;
+        margin-bottom: 10px;
+        font-size: 20px;
+    }
+ 
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 8px;
+        margin-bottom: 20px;
+    }
+ 
+    th, td {
+        border: 1px solid black;
+        padding: 10px;
+        font-size: 14px;
+    }
+ 
+    th {
+        background: #f2f2f2;
+        font-weight: bold;
+    }
+ 
+    .payment-box {
+        width: 50%;
+        padding: 15px;
+        border: 1px solid black;
+        background: #f9f9f9;
+        border-radius: 6px;
+    }
+</style>
+</head>
+ 
+<body>
+ 
+<!-- ============================= -->
+<!-- HEADER BAR -->
+<!-- ============================= -->
+<div class="header-bar">
+ 
+    <!-- LEFT: Logo + Hospital Info -->
+    <div class="header-left">
+        <img src="{{.HospitalLogo}}" alt="Hospital Logo" class="hospital-logo">
+ 
+        <div class="hospital-info">
+            <div class="hospital-name">{{.HospitalName}} HOSPITALS</div>
+            <div class="hospital-address">{{.HospitalAddress}}</div>
+            <div class="hospital-contact">Contact: {{.HospitalContact}}</div>
+        </div>
+    </div>
+ 
+    <!-- RIGHT: BARCODE -->
+    <img src="{{.Barcode}}" class="barcode" alt="Barcode">
+ 
+</div>
+ 
+<h1>Hospital Billing Summary</h1>
+ 
+<!-- ============================= -->
+<!-- PATIENT INFORMATION -->
+<!-- ============================= -->
+ 
+<h2>Patient Information</h2>
+ 
+<table>
+    <caption>Patient Information</caption>
+    <tr>
+        <th id="PI">Patient Name</th><td>{{.PatientName}}</td>
+        <th id="PI">Patient ID</th><td>{{.PatientID}}</td>
+    </tr>
+    <tr>
+        <th id="PI">Age</th><td>{{.Age}}</td>
+        <th id="PI">Gender</th><td>{{.Gender}}</td>
+    </tr>
+    <tr>
+        <th id="PI">Phone</th><td>{{.Phone}}</td>
+        <th id="PI">Admission Date</th><td>{{.AdmissionDate}}</td>
+    </tr>
+</table>
+ 
+<!-- ============================= -->
+<!-- BILL ITEMS -->
+<!-- ============================= -->
+ 
+<h2>Bill Summary</h2>
+ 
+<table>
+    <caption>Bill Summary</caption>
+    <tr>
+        
+        <th id="BS">Description</th>
+        <th id="BS">Amount (₹)</th>
+    </tr>
+ 
+    <tr>
+        
+        <td>Test Charges</td>
+        <td>₹ {{.totalTests}}</td>
+    </tr>
+ 
+    <tr>
+        <td>Medication Charges</td>
+        <td>₹ {{.totalMeds}}</td>
+    </tr>
+ 
+    <tr>
+        <th id="BS" colspan="1" style="text-align:right">Grand Total</th>
+        <th id="BS">₹ {{.grandTotal}}</th>
+    </tr>
+</table>
+ 
+<!-- ============================= -->
+<!-- PAYMENT SECTION -->
+<!-- ============================= -->
+ 
+<h2>Payment Method</h2>
+ 
+<div class="payment-box"
+     style="width:100%; display:flex; justify-content:space-between; gap:30px; align-items:flex-start;">
+ 
+    <!-- LEFT SECTION: TWO QR CODES -->
+    <div style="flex:1; display:flex; flex-direction:column; gap:20px;">
+ 
+        <!-- QR 1: UPI (PhonePe / Paytm / GPay) -->
+        <div style="text-align:center;">
+            <p><strong>Scan to Pay (UPI — PhonePe / GPay / Paytm)</strong></p>
+ 
+            <img src="{{.DynamicQRLink}}" alt="Hospital Logo"
+                 style="width:200px;height:200px;border:2px solid #000;border-radius:8px;">
+            <p><strong style="color:#54595F;">UPI ID:</strong> 9876543210@okaxis</p>
+            <p><strong style="color:#54595F;">Amount:</strong> ₹ {{.grandTotal}}</p>
+        </div>
+ 
+        <!-- QR 2: Razorpay -->
+        <div style="text-align:center;">
+            <p><strong>Scan to Pay Using Cards( Credit & Debit ),Wallets & NetBanking </strong></p>
+ 
+            <img src="{{.QRLink}}" alt="Hospital Logo"
+                 style="width:200px;height:200px;border:2px solid #000;border-radius:8px;">
+        </div>
+    </div>
+ 
+    <!-- RIGHT SECTION: BANK DETAILS -->
+    <div style="flex:1; font-size:15px;">
+        <p><strong>Bank Transfer</strong></p>
+        <p><strong style="color:#444A50;">Account Number:</strong> {{.AccountNumber}}</p>
+        <p><strong style="color:#54595F;">IFSC:</strong> {{.IFSC}}</p>
+        <p><strong style="color:#54595F;">Bank:</strong> {{.Bank}}</p>
+    </div>
+ 
+</div>
+ 
+ 
+ 
+ 
+</body>
+</html>
+ 
+ 
+ 

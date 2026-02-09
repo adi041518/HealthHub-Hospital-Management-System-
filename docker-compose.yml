@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  nats:
+    image: nats:latest
+    container_name: nats
+    ports:
+      - "4222:4222"
+
+  app:
+    image: healthhub360:1.0
+    container_name: healthhub360
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env        # Loaded at runtime (ignored by git & docker build)
+    depends_on:
+      - nats

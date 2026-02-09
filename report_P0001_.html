@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Patient & Hospital Report</title>
+ 
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 30px;
+        line-height: 1.6;
+    }
+ 
+     
+     
+.header-bar {
+    width: 100%;
+    height: 150px;
+    background: #0f5fa8;
+    margin-bottom: 30px;
+ 
+    display: flex;
+    justify-content: space-between;   
+    align-items: center;
+ 
+    padding: 0 40px;  
+}
+ 
+ 
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 40px;   
+}
+ 
+ 
+.hospital-logo {
+    width: 95px;
+    height: 95px;
+    object-fit: contain;
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid #ffffff;
+}
+ 
+ 
+.hospital-info {
+    color: white;
+    line-height: 1.4;
+}
+ 
+ 
+.hospital-info .hospital-name {
+    font-size: 28px;
+    font-weight: bold;
+}
+ 
+ 
+.hospital-info div {
+    font-size: 16px;
+}
+ 
+ 
+.barcode {
+    width: 150px;
+    height: 70px;
+    object-fit: contain;
+    
+    border-radius: 6px;
+    padding: 0;   
+}
+ 
+    
+ 
+    .hospital-name {
+        color: #ffffff;
+        font-size: 30px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+ 
+    h1 {
+        text-align: center;
+        font-size: 24px;
+        color: #0f5fa8;
+    }
+ 
+    h2 {
+        font-size: 18px;
+        color: #0f5fa8;
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
+ 
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 8px;
+        margin-bottom: 20px;
+        table-layout: fixed;
+    }
+ 
+    th {
+        border: 1px solid #000000;
+        padding: 10px;
+        font-size: 14px;
+        text-align: left;
+        background-color: #ffffff;
+        font-weight: bold;
+    }
+ 
+    td {
+        border: 1px solid #000000;
+        padding: 10px;
+        font-size: 14px;
+        vertical-align: top;
+    }
+ 
+    hr {
+        margin: 40px 0;
+        border: 0;
+        border-top: 2px solid #0f5fa8;
+    }
+</style>
+</head>
+ 
+<body>
+ 
+
+
+
+
+<div class="header-bar">
+ 
+    
+    <div class="header-left">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAAAAAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCACVAMgDASIAAhEBAxEB/8QAHAABAAEFAQEAAAAAAAAAAAAAAAcCBAUGCAMB/8QARxAAAQMDAgQDBAYHBAgHAAAAAQACAwQFEQYhBxIxQRNRYSIycYEUI1KRobEIFTNCcoKiF0NiwRYnNDVFU5KjY2WU0dLw8f/EABoBAQADAQEBAAAAAAAAAAAAAAADBAUCAQb/xAAxEQACAgECAwYFAwUBAAAAAAAAAQIDBBEhEjFBBRMiUWFxFEJSgZEVMrEjwdHh8PH/2gAMAwEAAhEDEQA/AOqUUdTcZdGwzzRSV1SHRPLCRSSEEg4OCBuMqj&#43;2rRWDi4VJ&#43;FHL/wDFSdzZ9LIPiafqX5JIXzIUX1HHPSEQPhuuEx8mUxB/qIWDr/0grS3IoLLcJ/LxXsj/AC5l0qLH8pxLMoXzImwlUkjGy5suvHy&#43;VDHC2WugpGno6UumcPlsFpF84jaqvQc2svVQIT/dU58FuPIhuMj4qSOHY&#43;exXn2pTFeHc6p1JrLT2nWE3i60sEv/ACubmkd8GDJ/BRLqHj61sjo9O2jxGg4E9a4tz6hjT&#43;ZUBPlPM5xGXnfmJ3XiZ39lZhiQj&#43;7co29pWz/ZsTTb&#43;Pl/iqWm4W63VFPn2mRB8TsehJI&#43;8KetG6mt2qbHDcrXITE8lr2OGHRvHVrh5rh6GQuJDyt14Z61qtFXsVMIdNQzENqqfP7RvZzc9HDt57hLsWLWta3GL2hOE&#43;G16pnZJPsqHeOWvauwy0tjsk5pq2oj8WapHvRR5IAbno44O/YKTdP3233&#43;1xV9pqY6ill/eafdPk4dj6Fc8fpJ2men1jTXNzT9Eq6ZsTX9g9hOW&#43;hwQVTxoJ2cMjSz7JRocq3z6kaPutwbXGobcqwzg5E3jOL8&#43;ecroHgPxArdQyTWW&#43;yGeup4/GhqHYDpIwQC12OpGRv3B8wubjt22Us/o2WyoqNcVFzYx30SipnRPk7c8hbytHrhpP3K/kwg63Ix&#43;z7LO&#43;STbT5nT2QFgNZamt2lrPJcrpIRE3DWMbu6R/ZrR3J/DqrnUd&#43;t1htctfdqllPTRdXE7uP2WjuT5Bcl8Sta1Wtb59JmDorfBltJTE55G93O83HbPl0VCil2v0NnLy1RH1NzuHHu/SVJNvttvp6fPstlD5H49SCB9wWb07x9Dnti1FaeRpODPRP5sfFjv8iVz7O/B9lUCUjyK0JY1TWmhjRzchPi4jt/TWsrBqKIG0XSnnf1MJdySN&#43;LHbrYS8ea4FimIILctLTkEHcfPstusPETVVmaxlFeqp0LekVQfGbjyw7OB8FWlhP5GXq&#43;1Vysj&#43;DssOH/AOKoLmq1ce75AA25WugrAP3oi6J33bhbTQfpBWl4H0&#43;zV8B7&#43;FIyT8&#43;VQvFtXTUtwz8eXzae5NqKLqbjlpCUDndcYf4qUux/0kq5/tq0Vj/eFR/6SX/2Ufc2fSyX4qn61&#43;SSEUdQcZtGTzxQxV85fI8MGaWQDJOBk46ZKJ3U10OlkVPlJGt8QOC1Nd6&#43;e5WCtjoKqZxfLBM36lzupcMbtJ6nqPgoiqNCOhe5p1Npc8pwSLk38sZXYUgBYRjPoFDWruBluudxkrLJW/qwyEufTuj8SLJ7t3Bbv26b9lYoyZLwylsUcrBhLxVw1fvoQw7TNvg/2rV1kb/hgE05Pw5WY/FWstLpqmBBuN0r3eUFI2nb/wBT3E/0rJXS06VtFdUUdRd7vcKineYpIqaiZC3mBwRzvcSPjyrHfrW2Mk8GzaegMp2a6tkfVyO/kwGZ/lKupt76v&#43;DLlFRejSX3bZjamopnsP0ChbBHnHiPkdK/P8Rw0H4ALHuC2S60N2c0S6hqBRsAzHDMA15H&#43;CBu4HqQ0eq14jc4UsWmitNNMt3AryLVdkA9F5mMpwniloW/RXEcuRyuwPVUuiPkVSYj5FN0dapmc0/frpYas1Nmr6ijmPvGJ2z/AOJp2PzC2i8cUdRXu1SW28/q&#43;tppdj4lI3mB7OGOhHYhR21rgds59V6xiQFpJwMjr8VxwRk9WtzpW2QXDGWx7XmL6M0CJzhlgdue63WwcT9Q2SxwW6zi3UVOxufq6RpLiRu477uPcladqHPKB38Mf5qya2Twm46Y7LqyEZS4WjmiycYKUXozM32/3O/VQqb3Xz1krfdMpyGfwjoPkFh5JdsA5K8&#43;Rx65wvrYsgol0Qb1esnqUdTk9SmF6iM5VYj3XqiecR5sC9mDZfWgAdvNfQF6locvcv6WenjiH063iaDOPFbIYnfAO3BPxBWSgpdNT/8AE7pb3noJqRs4P8zHNP8ASvtpobq1j59OTitaR9ZDDh0g/jhdufiA4eq&#43;C6257zDeNPQeMDhz6KR9JI3z9ghzM/yhRPXoTxWn7kvv/ouG6Yt07sU2rrGfITiaE/PLMfirmn0G&#43;ZwDdTaVbk4Gbm38sJa7TpW8VtPS0t2vFuqKiQRRxVFE2dvMTgDmY7J6/ZUv6Q4F2613COsvdabn4RDmU4i5IyQcgu3Jd8OnxUM7u72bevsWqcXvn4YrT0Y4ecFaWzV8Fz1DVxV9TA4SQwwNIiY4dHEndxHboPiimSJvKMAYHkiz5Wym9Wzbrxq648Kieioezmz0VaKMnNZ1BoXTuoZhNeLRS1M4/vTzMefLLmkE/NRxrDhrqSOtlGiay3W61uADaaBn0eQYG&#43;ZAC5xO&#43;/MPgptVPKpI2SiQWY9di3RyDqPQdXpQRT6oM0rpcvEVC10hdj7cxbys/qPosI2mq9QytZb6KGmoqUZJaS2KBp6ukld1J23JyegHZdscgHn6rG3qxWy9219BdaOKpo3kOdE8YBIOQdu&#43;VZjmNLdFGfZkW/C9vL/ZxjNQQ1FZT2&#43;yGWsncS3xsFgmd/hafdYAOp3xknA2VDrdE&#43;sq46WpEtPSxOkfUj3Xco3I9C8gN88grrSl4b6Xo7fX0lFa2Uza2IwzSRvcJOQ9QH5yPksS3g7pRlrfQMgrGxvmbNI9tS4PfyghrSfsjJOB33UizF5Fd9lz6NHLDqORlvjq8&#43;xLI6Nje7&#43;XHMR6AkD4le0lpqIzcfZy2gIEzvs5dyj8fyXWQ4YaV8e0ym2ZFsZyU7DI7k97my4Z9o8xzk9163Bmm9GQ1lX9BpqeSvkLpWxRgvqHdd8/Eny3XjzkjyXZsa48dstEubOcrBwy1DdLjaGGjmioa6JlQ6r5fZijPXOe4Hbvkealnh9weg0/Uz3G&#43;1MFwro2uFOxjT4ceQfbId1dvt5ep3WP1Bri73aZ7aATUVJn2Ww&#43;8fUu/wAhstn4b1eoqupLKwVDrZ4ZD31Wcl3bkJ3&#43;PZVZZs57LkU8PMxJ3qquEpeum3/hy7qIEBoOzuQD55K6H11wdgv8tPcLHUQ2&#43;sexgqInsPhyeyMvHL0djqOh9Oq581IOacNGd3Ab/wAZC6T4q1OqKapDbe2o/U/hYa&#43;kyHNf35yN9u3ZaNylK5KL0JMV11405WR136EMX3hpqG0XC8MFFNLQ2&#43;J87asN9iVgO2B9o77dsHstYjtNTKbcWt2uBcIXHYHDyw/iFMOmuIN8ssvJcxNcKMH2mTgh7f4XH8jspRtTtL63p6OsZRU9RLb5OeNkrMPpn5B6D4Z8jhLZXUbzSa80eY0MbL2rlpLyZyKKOV1BNVNPswvbG9vdvMDykj1w4fEK7ZbomVtJHVVIipamJsjKg&#43;6OYYBd6B2WnyAJXVh4YaWdNdJf1ceW5s5KiPxXcnvc2WjPsnmGcjurA8G9JutbaF8FY9jJXSxyGodzs5sZaD9k4Bwe&#43;/VRfGxZZ/Sprqcxw0MNNXVFvvbZaKpYQPGI5hC7/G0e80j95u/QjI2Vw&#43;nqrBMGXGhhq6KpaCC72oZ29nxyt6H1ByO47Lqqp4b6Wq7fQ0lbamVLaKIQQySvcZQwdAXg5I&#43;Kz1msVtstuZQWqkipqRji5sTBsCTknfuSuHmroiSPZb13Zynp7QdXqsyT6WdPE6HD/CrmOjLd8exM0cr/AOk&#43;ilTRvDXUs1TGNa1luuFra0h1NM36RKdtsSkBze2/MfgppbG1oAbsAqmjBKgnkylsi5VgV17tts1nT2hdPaendPaLTS01QdvFAL3gejnEkfJbMBgYX1FA23zLkYqK0itEAiIvDoIiIAiIgCYCIgGEwERAfCoQ1/WsquIJiuJcaGmfHE4DswgOd&#43;efkpwwon4saUrJax16tcL6hrmgVMLBlwI2D2&#43;e3UegXFmuhidv0224v9Ja6NNrzSJLomUopYhRNj&#43;jho8Pw8cvL2xhXHlkrnnTOr7lZCY6CYSwtOHU0oJDfl1Ckiw8SrfWmGGvpp6eocQB4YMrSflv&#43;C8jYpHGF27i3pRn4JeT/szmG/Q899ih86rw/wDukLt84yuYajhxdZb&#43;LpdKmis9ujqzO19ZJyySNEpd7LBvuPNSjfOLdppedtognrpc7PI8OP7zufuWrkQlkSXdLU9wrq8OuXfvh1euhIleymfSTCtbE6lLT4glA5eXvnPZQPw7rYKHiayG0vJttXLJAwE7OjwXNPrjl/FYPVmtrtqEeHX1IjpSdqWEFrSfIjq75reeDmjK2KvF&#43;u0DqdrGFtJA8YeSRgvcO22QB6lSxo&#43;Fpn3j3a5FR5f6jlVqiO0Xq2TIz3Qql8aMABfVko&#43;oCYREAREQBERAEREAREQBERAEREAREQBUEAuKrVBABJ80PGaVr2yaYdQPrr/DFAWbCaL2ZS7sBj3j6KJqjWot8LqfStFHbIBs6okxJUSepec4&#43;A6K/wCNlwlqdViic9wp6SJnI3O3M4cxdjz3A&#43;S2Xhpw&#43;tstqo7veYxWzVLBLHA/eKNp6ZH7zvPOy1KqacepX2rVvkfK5CszMydWMlHh5y6/97EW0lBfNT1Jko6WsuUpO8pyWj&#43;d234rL/6I0lvy7U&#43;oaOld1NLRfXz/AA22B&#43;at79fbxW8VbfZ562UWyK7MgZRx4jiDGzAAFrdjt5qReI/Du1ttlbdrM0UVRA0yyRM/ZyAbn2f3XY6YXmXm3wWkNEQx7Oiqp3QXG4&#43;e3L2/yZ7h5p7SbKBlx0/C2pedjUT&#43;3K13cHPun0GFvbABnCgXgtU1FFqr6KHuMFXE4SNztzN3a749R81PTDkLMVkrPFJ6s3eyMmGRjKcIqPRpeZUiIhqBERAEREAREQBERAEREAREQBERAEREAXzfPRfUQEQca9Jz1BZfrfE6YxxhlVE33i0Zw8DvjJB9MeSwHDjiKbNFFQXbMlsBxHM33ofTHdv4j1U9vA5XZwR6qHdat0hab6&#43;ogtcdTdG5L4g/lga493tGxd6fer1eXBVOu5apcj57tDHWJb8bXYoeevX/ACavDpqrunE06nY6GHTtJX/S3VszuVsgDuYBg6uJz8PVbBr3Xn61ppaK3Zhtzv2kr9nSjPT0Hp1Kw0gv2rnGpfgUUYx40zhDSwj07beizOhYdFMv8dHNcRdLt/dyyM5aYv8Asx52Lvz7KlZZZkvWK2RmKzIzF3NPghJ7t7OXt6fn1Zl&#43;EWmZo5X3uuhdECwspY3jDiD1efLI2HzUqR5wcjCoiAA2wBjovULmK4VofU4OHDDpVMOgREXpbCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgMfqGofSWK4VEQJkige9uOuQDhQzw1sVLqC71L7nmeKBokMZJ&#43;scSd3eY2z81OczBJE9jhlrhgg9wokr9FXmxXoV2m6iMUnMTzSyBpgb3Ds7OaPvUc46tMwe1sacrqr&#43;DjjHXVe/U1q81FTVcf7Raqmd8lsp6otipD&#43;ya3wDtydD1O5Vjxf0rQ6bv1JPZyKeKrY6XwGOx4L2kbt8hvnHYjZZW&#43;aislr1M&#43;62&#43;nju&#43;qJMNFUObwIXcvKfCb1cSB1XtYtC33Vl3bdNXGWCmccuZNjxZWg7Na0e43/AOgd1s1LutLJ7LTl5/Yr3S&#43;Ki6KlxSb11&#43;le/wDYl7StVNXactdVUj6&#43;eljkft&#43;8WglZdvReVPEImNY1oaxoDWgDAAC9gst82fSRTUUmERF4dBERAEREAREQBERAEREAREQBERAEREAREQHx/ulRNxeqquvvdk05HUfRqWuIMr&#43;zsv5RnzA8vMhS0RkELVdfaWoNSWrlrZDTS0&#43;ZIqppwYTjc&#43;o8wpsaca7FKXL/AL&#43;CnnVStolCD3/n0&#43;5H1uhp7LxLp9IWalZTNlpHyT3H36tx8PmBDjszB7AYWb4W1FfS6ivNmrq&#43;W4NgcZBM9xdg82Op8x28wViG1tZV08w064U9HHEIavUNcQx8rWjGefbYeQ&#43;9b9ofTtBY7eHUUv0mWpDZJaokfW9xjybvsPVR2zc5a&#43;XXzMzGUrroOraMW3r0afRLr7m0oiLk3wiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAiIgB6LE6loTdLHV0bc/XN5SB3GckfMbLLL4UOZwU4uMuTIsqIGycW6S1yML7THZn8tEf2YBwCOXplbzpO2OtNhoKJw/YM5AD&#43;4MkhvyGB8lrckP8Arqik/wDJXH/ugLfgpZy2SXLRFfHgk2/Vr7H1ERRFoIiIAiIgCIiAIiIAiIgCIiAIiIAiIgCIiAIiIAhREBq7rfniILh4nS1mDw&#43;X/wAUHOc/hhbM33QiLpkdfX3KkRFySBERAEREAREQBERAEREB/9k=" alt="Hospital Logo" class="hospital-logo">
+ 
+        <div class="hospital-info">
+            <div class="hospital-name">Dharun HOSPITALS</div>
+            <div class="hospital-address"></div>
+            <div class="hospital-contact">Contact: &#43;919054623012</div>
+        </div>
+    </div>
+ 
+    
+    <img src="data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADIAQAAAACFI5MzAAAAAmJLR0QAAKqNIzIAAAAJcEhZcwAAAGQAAABkAA&#43;Wxd0AAAAHdElNRQfpDAsFGiv1NEuaAAABYElEQVRYw&#43;2XPQ7DIAyFzcQxuCkkN&#43;UYTLh&#43;NlGTSl268IYiFCV8GSz/PkS/LfmTH8kQW8mfkrtIOfBWOEgxE88hNfc2ymnbvgcLOQRf9sR7xl&#43;Jiowysx65V0KivYJbwLkIog0i2EaeebCVRJV4Dvr&#43;rJ&#43;NJNaQpjrj7Nl3dhJURre&#43;Eh6VK/IUJOLsJWJpuAwfLCR5cViQG/zqjTkrBRk4MKttzafVBKQswz3ODX/0tDJxN7FoIw3R/8yR3pt9ejCQa9ImxaSdSwhwEG8tdc2xMsV3VhJiQRYfFJAAsN0Tk4IgDSGdgoRTSchYOehjDbU7Y9gykNB0aHhIxmgzNAS95IAcfsv2xEJCBYRToVCWaxnIpZ6iREJ71qwcZHU&#43;v4FpWN2UhYRabz7WPOaXCiAhfgAV4CnZ7vef/QTa08sFw/akIdFO4j7tl7B&#43;z8StZDWVhNGBK05TGvJt/clv5AVhzrK4QLyy6wAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAyNS0xMi0xMVQwNToyNjo0MyswMDowMIL3mKUAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMjUtMTItMTFUMDU6MjY6NDMrMDA6MDDzqiAZAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDI1LTEyLTExVDA1OjI2OjQzKzAwOjAwpL8BxgAAAABJRU5ErkJggg==" class="barcode" alt="Barcode">
+ 
+</div>
+ 
+ 
+ 
+ 
+<h1>Patient &amp; Hospital Report</h1>
+ 
+<p>This document contains structured hospital and patient information using static and
+dynamic placeholder text for integration into automated systems.</p>
+ 
+<h2>Introduction</h2>
+<p>This medical report template is designed for hospital systems to automatically populate
+patient data, doctor details, diagnosis information, treatment plans, and follow-up
+instructions. It uses dynamic placeholders so any backend service can replace them with
+actual values during PDF/DOCX generation.</p>
+ 
+<h2>Dynamic Overview</h2>
+<p>
+Patient <strong>Mohanshi</strong>, aged <strong>22</strong>, was admitted to
+<strong>Dharun</strong> on <strong>29/12/2025</strong>. The primary consulting doctor for this case is
+<strong>Rekha</strong> from the Dentist department.
+The patient reported Symptoms. After evaluation, the diagnosis was identified and further tests were conducted to confirm the assessment.
+</p>
+ 
+
+
+
+ 
+<h2>Hospital Information</h2>
+<table>
+    <caption>HI</caption>
+    <tr><th>Registration ID</th><td>H0001</td></tr>
+    <tr><th>Hospital Name</th><td>Dharun</td></tr>
+    <tr><th>Address</th><td></td></tr>
+    <tr><th>Contact</th><td>&#43;919054623012</td></tr>
+</table>
+ 
+
+
+
+ 
+<h2>Patient Information</h2>
+<table>
+    <caption>PI</caption>
+     <tr><th>Patient ID</th><td>P0001</td></tr>
+     <tr><th>Patient Name</th><td>Mohanshi</td></tr>
+     <tr><th>Age</th><td>22</td></tr>
+     <tr><th>Gender</th><td>Female</td></tr>
+     <tr><th>Admission Date</th><td>29/12/2025</td></tr>
+</table>
+ 
+
+
+
+ 
+<h2>Doctors</h2>
+<table>
+    <caption>Doctors</caption>
+    <tr>
+        <th>S.No</th>
+        <th>Doctor ID</th>
+        <th>Doctor Name</th>
+        <th>Department</th>
+    </tr>
+    
+    <tr>
+        <td>1</td>
+        <td>D0001</td>
+        <td>Rekha</td>
+        <td>Dentist</td>
+    </tr>
+    
+</table>
+ 
+
+
+
+ 
+<h2>Appointments</h2>
+<table>
+    <caption>Appointments</caption>
+    <tr>
+        <th>AppointmentID</th>
+        <th>Appointment Date</th>
+        <th>Reason</th>
+    </tr>
+    
+    <tr>
+        <td>A0001</td>
+        <td>29/12/2025 15:02</td>
+        <td>Cough</td>
+    </tr>
+    
+</table>
+ 
+
+
+
+ 
+<h2>Medical Details</h2>
+<p>During the <strong>Medical evaluation</strong>, the following conditions were reviewed:</p>
+ 
+<table>
+    <caption>Medical Details</caption>
+    <tr>
+        <th>S.No</th>
+        <th>Appointment ID</th>
+        <th>Prescription</th>
+    </tr>
+    
+    <tr>
+        <td>1</td>
+        <td>A0001</td>
+        <td>
+            
+            <div style="margin-bottom:12px; line-height:1.4;">
+                <strong>Medicine:</strong> Paracetamol 500mg <br>
+                <strong>Dosage:</strong> 1 <br>
+                <strong>Time:</strong>
+                 Morning 
+                 Afternoon 
+                 Night  <br>
+ 
+                <strong>Instructions:</strong> Take after food <br>
+                <strong>No. of Days:</strong> 3
+            </div>
+            <hr style="border:1px dashed #000;">
+            
+            <div style="margin-bottom:12px; line-height:1.4;">
+                <strong>Medicine:</strong> Dolo <br>
+                <strong>Dosage:</strong> 1 <br>
+                <strong>Time:</strong>
+                
+                 Afternoon 
+                 <br>
+ 
+                <strong>Instructions:</strong> Take before food <br>
+                <strong>No. of Days:</strong> 2
+            </div>
+            <hr style="border:1px dashed #000;">
+            
+        </td>
+    </tr>
+    
+</table>
+ 
+<h2>Additional Details</h2>
+<p>
+Further recommendations include lifestyle adjustments such as &lt;LifestyleChanges&gt;. The
+patient has been advised to monitor &lt;MonitorParameters&gt; and report any critical
+symptoms immediately.
+</p>
+ 
+<hr>
+ 
+</body>
+</html>
