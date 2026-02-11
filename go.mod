@@ -3,7 +3,7 @@ module HealthHub360
 go 1.25.0
 
 require (
-	github.com/KanapuramVaishnavi/Core v1.0.19
+	github.com/KanapuramVaishnavi/Core v1.0.20
 	github.com/gin-gonic/gin v1.11.0
 	github.com/joho/godotenv v1.5.1
 	github.com/robfig/cron/v3 v3.0.1
