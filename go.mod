@@ -1,6 +1,6 @@
 module HealthHub360
 
-go 1.25.5
+go 1.25.0
 
 require (
 	github.com/KanapuramVaishnavi/Core v1.0.20
